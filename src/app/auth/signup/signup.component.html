@@ -2,6 +2,7 @@
   <form
     fxLayout="column"
     fxLayoutAlign="center center"
+    fxLayoutGap="15px"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
@@ -24,7 +25,7 @@
       >
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field hintLabel="should be at least 6 charachters long.">
       <input
         matInput
         type="password"
@@ -40,11 +41,20 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="picker"  >
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <input matInput [matDatepicker]="picker" placeholder="Birthday" required ngModel name="birthday" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary">submit</button>
+    <div>
+      <mat-checkbox ngModel name="agree" required color="primary"
+        >Agree To Terms And Conditions.</mat-checkbox
+      >
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" >submit</button>
   </form>
 </section>
