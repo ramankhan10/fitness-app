@@ -39,6 +39,12 @@
       <mat-error>Has to be as least 6 charachters long.</mat-error>
     </mat-form-field>
 
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker"  >
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
     <button type="submit" mat-raised-button color="primary">submit</button>
   </form>
 </section>
