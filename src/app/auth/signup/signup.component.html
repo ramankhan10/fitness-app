@@ -10,7 +10,7 @@
       <input
         matInput
         type="text"
-        placeholder="placeholder"
+        placeholder="ایمیل خود را وارد کنید"
         ngModel
         email
         required
@@ -18,18 +18,18 @@
         #emailInput="ngModel"
       />
       <mat-error *ngIf="emailInput.hasError('required')"
-        >Field must not be empty</mat-error
+        >ایمیل نمیتواند خالی باشد!</mat-error
       >
       <mat-error *ngIf="!emailInput.hasError('required')"
-        >Email is invalid</mat-error
+        >ایمیل معتبر نیست.</mat-error
       >
     </mat-form-field>
 
-    <mat-form-field hintLabel="should be at least 6 charachters long.">
+    <mat-form-field hintLabel="رمز عبور حداقل باید شش کاراکتر داشته باشد.">
       <input
         matInput
         type="password"
-        placeholder="password"
+        placeholder="رمز عبور خود را وارد کنید."
         ngModel
         required
         minlength="6"
@@ -37,11 +37,11 @@
         #pwInput="ngModel"
       />
       <mat-hint align="end">{{ pwInput.value.length }} / 6</mat-hint>
-      <mat-error>Has to be as least 6 charachters long.</mat-error>
+      <mat-error>رمز عبور حداقل باید شش کاراکتر داشته باشد.</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Birthday" required ngModel name="birthday" />
+      <input matInput [matDatepicker]="picker" placeholder="تاریخ تولد خود را وارد کنید." required ngModel name="birthday" />
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
@@ -51,10 +51,10 @@
 
     <div>
       <mat-checkbox ngModel name="agree" required color="primary"
-        >Agree To Terms And Conditions.</mat-checkbox
+        >باشرایط و ظوابط موافقم.</mat-checkbox
       >
     </div>
 
-    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" >submit</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" >ثبت نام</button>
   </form>
 </section>
