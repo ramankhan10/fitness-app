@@ -1,3 +1,35 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <p>Raman khan</p>
+  </mat-sidenav>
 
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div>
+        <button (click)="sidenav.toggle()" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
 
-<router-outlet></router-outlet>
+      <div>لوگو</div>
+
+      <div fxFlex fxLayout  fxLayoutAlign="flex-end">
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li>
+            <a routerLink="/signup">ثبت نام</a>
+          </li>
+          <li>
+            <a routerLink="/login">ورود</a>
+          </li>
+          <li>
+            <a routerLink="/logout">تمرین</a>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
