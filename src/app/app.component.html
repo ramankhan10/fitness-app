@@ -5,14 +5,14 @@
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <div>
+      <div fxHide.sm fxHide.md fxHide.xl>
         <button (click)="sidenav.toggle()" mat-icon-button>
           <mat-icon>menu</mat-icon>
         </button>
       </div>
 
-      <div fxFlex fxLayout fxLayoutAlign="flex-end">
-        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="50px" class="navigation-items">
           <li>
             <a routerLink="/signup">
               <mat-icon>person_add</mat-icon>
