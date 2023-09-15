@@ -1,37 +1,10 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation">
-    <p>Raman khan</p>
+    <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <div fxHide.sm fxHide.md fxHide.xl>
-        <button (click)="sidenav.toggle()" mat-icon-button>
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-
-      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="50px" class="navigation-items">
-          <li>
-            <a routerLink="/signup">
-              <mat-icon>person_add</mat-icon>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/login">
-              <mat-icon>login</mat-icon>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/logout">
-              <mat-icon>home</mat-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </mat-toolbar>
-
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
