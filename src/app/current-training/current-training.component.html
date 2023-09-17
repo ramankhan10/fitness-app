@@ -4,7 +4,10 @@
   fxLayoutAlign="center center"
 >
   <mat-progress-spinner [value]="progress"> </mat-progress-spinner>
-  <h1 class="progress-title">{{progress}} %</h1>
+
+  <h1 class="progress-title">{{ progress }} %</h1>
+
   <p class="progress-sub">ادامه بده تو میتونی</p>
-  <button mat-raised-button color="accent">توقف</button>
+
+  <button mat-raised-button color="accent" (click)="onStop()">توقف</button>
 </section>
