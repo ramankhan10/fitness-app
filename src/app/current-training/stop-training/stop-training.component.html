@@ -1,6 +1,10 @@
-<h1 mat-dialog-title>
-  آیا از توقف تمرین اطمینان دارید؟
-</h1>
+<h1 mat-dialog-title>آیا از توقف تمرین اطمینان دارید؟</h1>
+
+<mat-dialog-content>
+  <p>
+    شما تا این لحظه {{ passedData.progress }} % از تمرین خود را انجام داده اید
+  </p>
+</mat-dialog-content>
 
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close]="true">بله</button>
