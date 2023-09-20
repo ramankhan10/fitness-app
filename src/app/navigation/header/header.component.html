@@ -7,19 +7,27 @@
 
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="50px" class="navigation-items">
-      <li>
+      <li *ngIf="!isAuth">
         <a routerLink="/signup">
           <mat-icon>person_add</mat-icon>
         </a>
       </li>
-      <li>
+
+      <li *ngIf="!isAuth">
         <a routerLink="/login">
           <mat-icon>login</mat-icon>
         </a>
       </li>
-      <li>
+
+      <li *ngIf="isAuth">
         <a routerLink="/training">
           <mat-icon>home</mat-icon>
+        </a>
+      </li>
+
+      <li *ngIf="isAuth">
+        <a routerLink="/logout">
+          <mat-icon>logout</mat-icon>
         </a>
       </li>
     </ul>
