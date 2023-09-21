@@ -6,22 +6,22 @@
 
   <ng-container matColumnDef="duration">
     <th mat-header-cell *matHeaderCellDef>مدت</th>
-    <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.duration | number }}</td>
   </ng-container>
 
   <ng-container matColumnDef="calories">
     <th mat-header-cell *matHeaderCellDef>کالری</th>
-    <td mat-cell *matCellDef="let element">{{ element.calories }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.calories | number }}</td>
   </ng-container>
 
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef>تاریخ</th>
-    <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.date | persianDate }}</td>
   </ng-container>
 
   <ng-container matColumnDef="state">
     <th mat-header-cell *matHeaderCellDef>وضعیت</th>
-    <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.state | translation}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
