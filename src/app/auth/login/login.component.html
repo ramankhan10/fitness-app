@@ -40,6 +40,6 @@
       <mat-error>رمز عبور حداقل باید شش کاراکتر داشته باشد.</mat-error>
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary">ورود</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">ورود</button>
   </form>
 </section>
