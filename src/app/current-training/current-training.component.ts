@@ -12,19 +12,19 @@ export class CurrentTrainingComponent implements OnInit {
   progress = 0;
   timer: any;
 
-  @Output() dialogEvent = new EventEmitter();
-
   constructor(
     public dialog: MatDialog,
     private trainingService: TrainingService
   ) {}
 
   startOrResumeTraining() {
-    const increament = (this.trainingService.getRunningExercise().duration / 100) * 1000;
+    const increament =
+      (this.trainingService.getRunningExercise().duration! / 100) * 1000;
 
     this.timer = setInterval(() => {
       this.progress += 1;
       if (this.progress >= 100) {
+        this.trainingService.completeExercise();
         clearInterval(this.timer);
       }
     }, increament);
@@ -44,7 +44,7 @@ export class CurrentTrainingComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.dialogEvent.emit();
+        this.trainingService.cancelExercise(this.progress);
       } else {
         this.startOrResumeTraining();
       }
