@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fitness-app';
-  openSidenav: boolean = false;
+
+  constructor(private db: AngularFirestore) {
+    this.db
+      .collection('exercises')
+      .valueChanges()
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
 }

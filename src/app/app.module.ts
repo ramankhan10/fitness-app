@@ -60,7 +60,7 @@ import {environment} from '../environments/environment'
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     {
