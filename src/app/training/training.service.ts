@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-
 export class TrainingService {
   exerciseChanged = new Subject<Exercise | null>();
   exercisesChanged = new Subject<Exercise[] | null>();
@@ -53,7 +52,7 @@ export class TrainingService {
   }
 
   completeExercise() {
-    this.exercises.push({
+    this.addDataToDataBase({
       ...this.runningExercises!,
       date: new Date(),
       state: 'completed',
@@ -64,7 +63,7 @@ export class TrainingService {
   }
 
   cancelExercise(progress: number) {
-    this.exercises.push({
+    this.addDataToDataBase({
       ...this.runningExercises!,
       date: new Date(),
       state: 'canceled',
@@ -78,5 +77,9 @@ export class TrainingService {
 
   getCompleteOrCancelExercises() {
     return [...this.exercises];
+  }
+
+ private addDataToDataBase(exercise: Exercise) {
+    this.db.collection('finishedExercise').add(exercise);
   }
 }
