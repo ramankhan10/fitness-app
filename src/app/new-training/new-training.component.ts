@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-training.component.scss'],
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
-  exercises: Exercise[];
+
+  exercises: Exercise[] | null;
   exercisesSubscription: Subscription;
 
   constructor(
@@ -20,10 +21,8 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.exercisesSubscription =
-      this.trainingService.exercisesChanged.subscribe((thiexercises) => {
-        this.exercises = this.exercises;
-      });
+    this.exercisesSubscription= this.trainingService.exercisesChanged.subscribe(exercises=>{ this.exercises=exercises});
+
     this.trainingService.fetchAvailableExrsciss();
   }
 
