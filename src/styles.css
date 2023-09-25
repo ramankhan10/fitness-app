@@ -1,0 +1,13 @@
+*{
+    font-family: "Baloo Bhaijaan 2", cursive;
+    letter-spacing: 0px;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}

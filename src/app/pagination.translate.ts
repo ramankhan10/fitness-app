@@ -4,7 +4,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 @Injectable()
 export class PersianPaginatorIntl extends MatPaginatorIntl {
   override itemsPerPageLabel = 'مورد در هر صفحه';
-  override nextPageLabel = 'صفحه بعد ';
+  override nextPageLabel = 'صفحه بعد';
   override previousPageLabel = 'صفحه قبل';
   override firstPageLabel = 'صفحه اول';
   override lastPageLabel = 'صفحه آخر';

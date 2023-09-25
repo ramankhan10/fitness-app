@@ -1,12 +1,7 @@
+
 <mat-nav-list>
-  <a mat-list-item routerLink="/signup" (click)="onClose()" *ngIf="!isAuth"
-    >ثبت نام</a
-  >
-  <a mat-list-item routerLink="/login" (click)="onClose()" *ngIf="!isAuth"
-    >ورود</a
-  >
-  <a mat-list-item routerLink="/training" (click)="onClose()" *ngIf="isAuth"
-    >تمرین</a
-  >
-  <a mat-list-item (click)="onLogout()" *ngIf="isAuth">خروج</a>
+    <a mat-list-item routerLink="/signup" (click)="onClose()" *ngIf="!isAuth">ثبت نام</a>
+    <a mat-list-item routerLink="/login" (click)="onClose()" *ngIf="!isAuth">ورود</a>
+    <a mat-list-item routerLink="/training" (click)="onClose()" *ngIf="isAuth">تمرین</a>
+    <a mat-list-item (click)="onLogout()" *ngIf="isAuth">خروج</a>
 </mat-nav-list>

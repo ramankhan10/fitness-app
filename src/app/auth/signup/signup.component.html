@@ -2,15 +2,15 @@
   <form
     fxLayout="column"
     fxLayoutAlign="center center"
-    fxLayoutGap="15px"
+    fxLayoutGap="10px"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input
         matInput
         type="text"
-        placeholder="ایمیل خود را وارد کنید"
+        placeholder="ایمیل"
         ngModel
         email
         required
@@ -18,22 +18,22 @@
         #emailInput="ngModel"
       />
       <mat-error *ngIf="emailInput.hasError('required')"
-        >ایمیل نمیتواند خالی باشد!</mat-error
+        >ایمیل نباید خالی باشد</mat-error
       >
       <mat-error *ngIf="!emailInput.hasError('required')"
-        >ایمیل معتبر نیست.</mat-error
+        >ایمیل نامعتبر است</mat-error
       >
     </mat-form-field>
 
     <mat-form-field hintLabel="رمز عبور حداقل باید شش کاراکتر داشته باشد.">
       <input
         matInput
-        type="password"
-        placeholder="رمز عبور خود را وارد کنید."
+        type="text"
+        placeholder="رمز عبور"
         ngModel
+        name="password"
         required
         minlength="6"
-        name="password"
         #pwInput="ngModel"
       />
       <mat-hint align="end">{{ pwInput.value.length }} / 6</mat-hint>
@@ -41,7 +41,14 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="تاریخ تولد خود را وارد کنید." required ngModel name="birthday" />
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="تاریخ تولد"
+        ngModel
+        name="birthday"
+        required
+      />
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
@@ -49,12 +56,17 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <div>
-      <mat-checkbox ngModel name="agree" required color="primary"
-        >باشرایط و ضوابط موافقم.</mat-checkbox
-      >
-    </div>
+    <mat-checkbox ngModel name="agree" required color="primary"
+      >با شرایط و ضوابط موافقم</mat-checkbox
+    >
 
-    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" >ثبت نام</button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      ثبت نام
+    </button>
   </form>
 </section>

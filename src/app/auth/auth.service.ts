@@ -8,21 +8,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Injectable()
 export class AuthService {
   authChange = new Subject<boolean>();
-
   private user: User | null;
 
   constructor(private router: Router, private fireAuth: AngularFireAuth) {}
 
-  private successFullAuth() {
-    this.authChange.next(true);
-    this.router.navigate(['/training']);
-  }
-
   registerUser(authData: AuthData) {
-    // this.user = {
-    //   email: authData.email,
-    //   userId: Math.round(Math.random() * 10000).toString(),
-    // };
     this.fireAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {
@@ -31,7 +21,8 @@ export class AuthService {
       .catch((error) => {
         console.log(error);
       });
-    this.successFullAuth();
+
+    this.successfullAuth();
   }
 
   login(authData: AuthData) {
@@ -39,20 +30,26 @@ export class AuthService {
       email: authData.email,
       userId: Math.round(Math.random() * 10000).toString(),
     };
-    this.successFullAuth();
+    this.successfullAuth();
   }
 
   logout() {
+    this.fireAuth.signOut();
     this.user = null;
     this.authChange.next(false);
     this.router.navigate(['/login']);
   }
 
-  getuser() {
+  getUser() {
     return { ...this.user };
   }
 
   isAuth() {
     return this.user != null;
+  }
+
+  private successfullAuth() {
+    this.authChange.next(true);
+    this.router.navigate(['/training']);
   }
 }
