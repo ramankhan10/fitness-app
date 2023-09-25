@@ -35,6 +35,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { PersianPaginatorIntl } from './pagination.translate';
 import { AngularFireModule } from '@angular/fire/compat';
 import {environment} from '../environments/environment'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {environment} from '../environments/environment'
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
