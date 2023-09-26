@@ -6,7 +6,7 @@
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
   >
-    <mat-form-field >
+    <mat-form-field>
       <input
         matInput
         type="text"
@@ -61,6 +61,7 @@
     >
 
     <button
+      *ngIf="!isLoading"
       type="submit"
       mat-raised-button
       color="primary"
@@ -68,5 +69,6 @@
     >
       ثبت نام
     </button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
   </form>
 </section>

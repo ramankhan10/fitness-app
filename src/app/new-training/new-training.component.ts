@@ -10,24 +10,27 @@ import { Subscription } from 'rxjs';
   templateUrl: './new-training.component.html',
   styleUrls: ['./new-training.component.css'],
 })
-export class NewTrainingComponent implements OnInit,OnDestroy {
+export class NewTrainingComponent implements OnInit, OnDestroy {
   exercises: Exercise[];
-  exercisesSubscription:Subscription;
+  exercisesSubscription: Subscription;
   constructor(
     private trainingService: TrainingService,
     private db: AngularFirestore
   ) {}
 
   ngOnInit(): void {
- this.exercisesSubscription= this.trainingService.exercisesChanged.subscribe(exercises=>{ this.exercises=exercises});
-  this.trainingService.fetchAvailableExercises();
+    this.exercisesSubscription =
+      this.trainingService.exercisesChanged.subscribe((exercises) => {
+        this.exercises = exercises;
+      });
+    this.trainingService.fetchAvailableExercises();
   }
 
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.exercisesSubscription.unsubscribe();
   }
 }

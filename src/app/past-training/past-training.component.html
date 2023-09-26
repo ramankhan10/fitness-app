@@ -1,6 +1,5 @@
-
 <div class="input-wrapper" fxLayoutAlign="center center">
-  <mat-form-field fxFlex="40%"> 
+  <mat-form-field fxFlex="40%">
     <mat-label> فیلتر </mat-label>
     <input matInput type="text" (keyup)="applyFilter($event)" />
   </mat-form-field>
@@ -9,8 +8,6 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-
- 
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>عنوان</th>
@@ -43,7 +40,5 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-
-  <mat-paginator [pageSizeOptions]="[1, 5, 10, 20]"
-                 showFirstLastButtons>
-  </mat-paginator>
+<mat-paginator [pageSizeOptions]="[1, 5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

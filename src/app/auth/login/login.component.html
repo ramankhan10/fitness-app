@@ -1,59 +1,56 @@
 <section class="signup-form">
-    <form
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      fxLayoutGap="10px"
-      #f="ngForm"
-      (ngSubmit)="onSubmit(f)"
-    >
-      <mat-form-field>
-        <input
-          matInput
-          type="text"
-          placeholder="ایمیل"
-          ngModel
-          email
-          required
-          name="email"
-          #emailInput="ngModel"
-          value="test@gmail.com"
-        />
-        <mat-error *ngIf="emailInput.hasError('required')"
-          >ایمیل نباید خالی باشد</mat-error
-        >
-        <mat-error *ngIf="!emailInput.hasError('required')"
-          >ایمیل نامعتبر است</mat-error
-        >
-      </mat-form-field>
-  
-      <mat-form-field hintLabel="رمز عبور حداقل باید شش کاراکتر داشته باشد.">
-        <input
-          matInput
-          type="text"
-          placeholder="رمز عبور"
-          ngModel
-          name="password"
-          required
-          minlength="6"
-          #pwInput="ngModel"
-          value="1234567"
-        />
-        <mat-hint align="end">{{ pwInput.value.length }} / 6</mat-hint>
-        <mat-error>رمز عبور حداقل باید شش کاراکتر داشته باشد.</mat-error>
-      </mat-form-field>
-  
-      
-     
-  
-      <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-        [disabled]="f.invalid"
-      
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="ایمیل"
+        ngModel
+        email
+        required
+        name="email"
+        #emailInput="ngModel"
+        value="test@gmail.com"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >ایمیل نباید خالی باشد</mat-error
       >
-        ورود
-      </button>
-    </form>
-  </section>
-  
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >ایمیل نامعتبر است</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field hintLabel="رمز عبور حداقل باید شش کاراکتر داشته باشد.">
+      <input
+        matInput
+        type="text"
+        placeholder="رمز عبور"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+        value="1234567"
+      />
+      <mat-hint align="end">{{ pwInput.value.length }} / 6</mat-hint>
+      <mat-error>رمز عبور حداقل باید شش کاراکتر داشته باشد.</mat-error>
+    </mat-form-field>
+
+    <button
+      *ngIf="! isLoading"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      ورود
+    </button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>

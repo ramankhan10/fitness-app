@@ -12,7 +12,6 @@ export class CurrentTrainingComponent implements OnInit {
   progress = 0;
   timer: any;
 
-
   constructor(
     private dialog: MatDialog,
     private trainingService: TrainingService
@@ -44,7 +43,7 @@ export class CurrentTrainingComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-      this.trainingService.cancelExercise(this.progress);
+        this.trainingService.cancelExercise(this.progress);
       } else {
         this.startOrResumeTraining();
       }

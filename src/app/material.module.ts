@@ -11,13 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
-import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -38,7 +38,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -58,7 +59,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatDialogModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}

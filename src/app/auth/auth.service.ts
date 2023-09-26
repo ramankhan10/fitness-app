@@ -4,33 +4,60 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UIService } from 'src/app/shared/ui.service';
 
 @Injectable()
 export class AuthService {
   authChange = new Subject<boolean>();
+  private isAuthenticated = false;
+
   private user: User | null;
 
-  constructor(private router: Router, private fireAuth: AngularFireAuth) {}
+  constructor(
+    private router: Router,
+    private fireAuth: AngularFireAuth,
+    private snakBar: MatSnackBar,
+    private uiService: UIService
+  ) {}
 
   registerUser(authData: AuthData) {
+    this.uiService.loadingState.next(true);
+
     this.fireAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {
-        console.log(result);
+        this.successfullAuth();
+
+        this.uiService.loadingState.next(false);
       })
       .catch((error) => {
-        console.log(error);
-      });
+        this.uiService.loadingState.next(false);
 
-    this.successfullAuth();
+        this.snakBar.open(error.message, null, {
+          duration: 3000,
+        });
+        this.failFullAuth();
+      });
   }
 
   login(authData: AuthData) {
-    this.user = {
-      email: authData.email,
-      userId: Math.round(Math.random() * 10000).toString(),
-    };
-    this.successfullAuth();
+    this.uiService.loadingState.next(true);
+
+    this.fireAuth
+      .signInWithEmailAndPassword(authData.email, authData.password)
+      .then((result) => {
+        this.successfullAuth();
+        this.uiService.loadingState.next(false);
+      })
+      .catch((error) => {
+        this.uiService.loadingState.next(false);
+
+        this.snakBar.open(error.message, null, {
+          duration: 3000,
+        });
+        this.failFullAuth();
+      });
   }
 
   logout() {
@@ -49,7 +76,14 @@ export class AuthService {
   }
 
   private successfullAuth() {
+    this.isAuthenticated = true;
     this.authChange.next(true);
     this.router.navigate(['/training']);
+  }
+
+  private failFullAuth() {
+    this.isAuthenticated = false;
+    this.authChange.next(false);
+    this.router.navigate(['/signup']);
   }
 }

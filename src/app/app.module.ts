@@ -14,21 +14,28 @@ import { PastTrainingComponent } from './past-training/past-training.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DateAdapter,MAT_DATE_FORMATS,MAT_DATE_LOCALE } from '@angular/material/core';
-import {MaterialPersianDateAdapter,PERSIAN_DATE_FORMATS} from './persian-dateadapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import {
+  MaterialPersianDateAdapter,
+  PERSIAN_DATE_FORMATS,
+} from './persian-dateadapter';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { StopTrainingComponent } from './current-training/stop-training/stop-training.components';
 import { AuthService } from './auth/auth.service';
-import {TrainingService} from './training/training.service';
+import { TrainingService } from './training/training.service';
 import { PersianDatePipe } from './persian-date.pipe';
 import { TranslationPipe } from './translation.pipe';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import {PersianPaginatorIntl}from './pagination.translate';
+import { PersianPaginatorIntl } from './pagination.translate';
 import { AngularFireModule } from '@angular/fire/compat';
-import { evnironment } from "../environments/environment";
+import { evnironment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
+import { UIService } from './shared/ui.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     StopTrainingComponent,
     PersianDatePipe,
     TranslationPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -55,13 +61,23 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     FormsModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(evnironment.firebase)
+    AngularFireModule.initializeApp(evnironment.firebase),
   ],
-  providers: [{provide:MatPaginatorIntl,useClass:PersianPaginatorIntl},{
-    provide:DateAdapter,useClass:MaterialPersianDateAdapter,deps:[MAT_DATE_LOCALE]
-  },{
-    provide:MAT_DATE_FORMATS,useValue:PERSIAN_DATE_FORMATS
-  },AuthService,TrainingService],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: PersianPaginatorIntl },
+    {
+      provide: DateAdapter,
+      useClass: MaterialPersianDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: PERSIAN_DATE_FORMATS,
+    },
+    AuthService,
+    UIService,
+    TrainingService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
